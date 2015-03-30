@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microwin.Hosting.Owin")]
+[assembly: AssemblyTitle("Microwin.Hosting.Unity")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Niclas Paulsson")]
-[assembly: AssemblyProduct("Microwin.Hosting.Owin")]
+[assembly: AssemblyProduct("Microwin.Hosting.Unity")]
 [assembly: AssemblyCopyright("Copyright © Niclas Paulsson 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5660f241-dbc2-459f-80c1-ee8cd553e2f6")]
+[assembly: Guid("5313aeeb-e943-4aed-984e-5881a2788b09")]
 
 // Version information for an assembly consists of the following four values:
 //

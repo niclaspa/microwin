@@ -1,4 +1,5 @@
 ﻿using Microwin.Hosting.Owin;
+using Microwin.Hosting.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,17 @@ namespace SampleProject.Owin
     {
         public static void Main(string[] args)
         {
-            OwinService.Start(new HttpConfiguration());
+            OwinService.Start(GetConfiguration());
 
             Console.ReadLine();
+        }
+
+        public static HttpConfiguration GetConfiguration()
+        {
+            var config = new HttpConfiguration();
+            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.RegisterGlobalComponents());
+
+            return config;
         }
     }
 }

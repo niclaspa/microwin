@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{7E8F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleProject.Owin", "SampleProject.Owin\SampleProject.Owin.csproj", "{474C88FE-C23C-4126-AA9C-3FB16EBF0A8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.Hosting.Unity", "Microwin.Hosting.Unity\Microwin.Hosting.Unity.csproj", "{EC34361B-FD26-4977-9BC5-015B410FD99B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{474C88FE-C23C-4126-AA9C-3FB16EBF0A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{474C88FE-C23C-4126-AA9C-3FB16EBF0A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{474C88FE-C23C-4126-AA9C-3FB16EBF0A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
