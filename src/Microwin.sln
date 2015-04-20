@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleProject.Owin", "Sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.Hosting.Unity", "Microwin.Hosting.Unity\Microwin.Hosting.Unity.csproj", "{EC34361B-FD26-4977-9BC5-015B410FD99B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.ServiceBus.Redis", "Microwin.ServiceBus.Redis\Microwin.ServiceBus.Redis.csproj", "{2D222B19-6650-4317-947C-D56C1D9DE702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.IoC", "Microwin.IoC\Microwin.IoC.csproj", "{B6A731E8-926F-48C5-AD16-75166E9CDBC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.IoC.Unity", "Microwin.IoC.Unity\Microwin.IoC.Unity.csproj", "{0EAFEECC-69FE-445A-B54A-6A290B5A0BA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +49,18 @@ Global
 		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC34361B-FD26-4977-9BC5-015B410FD99B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D222B19-6650-4317-947C-D56C1D9DE702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D222B19-6650-4317-947C-D56C1D9DE702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D222B19-6650-4317-947C-D56C1D9DE702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D222B19-6650-4317-947C-D56C1D9DE702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A731E8-926F-48C5-AD16-75166E9CDBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A731E8-926F-48C5-AD16-75166E9CDBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A731E8-926F-48C5-AD16-75166E9CDBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A731E8-926F-48C5-AD16-75166E9CDBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EAFEECC-69FE-445A-B54A-6A290B5A0BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAFEECC-69FE-445A-B54A-6A290B5A0BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAFEECC-69FE-445A-B54A-6A290B5A0BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAFEECC-69FE-445A-B54A-6A290B5A0BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
