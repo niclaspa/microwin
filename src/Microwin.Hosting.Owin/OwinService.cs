@@ -1,6 +1,7 @@
 ﻿using Microwin;
 using Microwin.Config;
 using Microwin.Extensions;
+using Microwin.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace Microwin.Hosting.Owin
 
         public static void Start(HttpConfiguration config)
         {
+            Log.Info("Starting {0} ...".InvariantFormat(name));
+
             HostFactory.Run(x =>
             {
                 x.Service(() => new OwinServiceControl(config));

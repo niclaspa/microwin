@@ -12,13 +12,12 @@ using Microwin.ServiceBus.Redis;
 using Microwin.Config;
 using Microwin.IoC;
 using StackExchange.Redis;
+using Microwin.Logging;
 
 namespace Microwin.ServiceBus.Redis
 {
     public class MessageHandler : ServiceControl
     {
-        //private ILog log = LogHelper.GetLogger();
-
         private Dictionary<string, IRequestProcessor> requestProcessors;
         private IDependencyResolver resolver;
         private string channel;
@@ -78,7 +77,7 @@ namespace Microwin.ServiceBus.Redis
             {
                 using (var container = this.resolver.BeginScope())
                 {
-                    //log.Info("Message received: " + json);
+                    Log.Info("Message received: {0}".InvariantFormat(json));
 
                     var request = this.ParseRequest(json);
                     var processor = this.ResolveProcessor(request.Action);
@@ -87,10 +86,10 @@ namespace Microwin.ServiceBus.Redis
             }
             catch (Exception e)
             {
-                //log.Error(e.ToString());
+                Log.Error(e.ToString());
             }
 
-            //log.Info("Finished processing message");
+            Log.Info("Finished processing message");
         }
 
         private Request ParseRequest(string json)

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using SampleProject.Owin.Services;
 using SampleProject.Owin.ViewModels;
+using Microwin.Hosting.Owin;
 
 namespace SampleProject.Owin.Controllers
 {
+    [HttpLogging]
     public class HelloController : ApiController
     {
         private IHelloService helloService;

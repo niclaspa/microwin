@@ -1,8 +1,11 @@
 ﻿using Microwin.Config;
+using Microwin.Extensions;
 using Microwin.IoC;
+using Microwin.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Topshelf;
@@ -15,7 +18,7 @@ namespace Microwin.ServiceBus.Redis
 
         public static void Start(string channel, IDependencyResolver resolver, params IRequestProcessor[] processors)
         {
-            //LogHelper.LogDebug("Starting {0} ...".InvariantFormat(name));
+            Log.Info("Starting {0} ...".InvariantFormat(name));
 
             HostFactory.Run(x =>
             {

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Topshelf;
+using Microwin.Logging;
 
 namespace Microwin.Hosting.Owin
 {
@@ -28,7 +29,9 @@ namespace Microwin.Hosting.Owin
             {
                 options.Urls.Add(OwinService.GetBaseUrl("http", url));
             }
-            
+
+            Log.Info("Listening on {0}".InvariantFormat(string.Join(",", options.Urls)));
+
             this.webApplication = WebApp.Start(options, (x) => WebPipeline.Configure(x, config));
             return true;
         }
