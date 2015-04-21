@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SampleProject.Owin.ViewModels;
-using ServiceStack.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +14,11 @@ namespace SampleProject.ServiceBus.ConsoleDriver
     {
         public static void Main(string[] args)
         {
-            var client = new RedisClient("localhost");
-
-            client.EnqueueItemOnList(
-                "SampleProject", 
-                JsonConvert.SerializeObject(new Request("post_message", new Message { Text = "hello there" })));
-
-            client.EnqueueItemOnList(
-                "SampleProject",
-                JsonConvert.SerializeObject(new Request("post_message_async", new Message { Text = "hello there async" })));
+            using (var client = new RedisServiceBusClient("localhost"))
+            {
+                client.PostRequest("SampleProject", "post_message", new Message { Text = "hello there" });
+                client.PostRequest("SampleProject", "post_message_async", new Message { Text = "hello there async" });
+            }
         }
     }
 }

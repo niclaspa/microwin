@@ -11,11 +11,11 @@ using System.Threading;
 using Microwin.ServiceBus.Redis;
 using Microwin.Config;
 using Microwin.IoC;
-using ServiceStack.Redis;
+using StackExchange.Redis;
 
 namespace Microwin.ServiceBus.Redis
 {
-    public class MessageHandler : ServiceControl, IDisposable
+    public class MessageHandler : ServiceControl
     {
         //private ILog log = LogHelper.GetLogger();
 
@@ -23,9 +23,10 @@ namespace Microwin.ServiceBus.Redis
         private IDependencyResolver resolver;
         private string channel;
         private string baseAddress;
+        private ConnectionMultiplexer redisClient;
 
         private readonly int maxWorkerThreads = Convert.ToInt32(AppSettings.ReadString("MaxWorkerThreads", true));
-        
+
         public MessageHandler(string channel, IDependencyResolver resolver, IEnumerable<IRequestProcessor> processors)
         {
             this.channel = channel;
@@ -36,31 +37,30 @@ namespace Microwin.ServiceBus.Redis
 
         public bool Start(HostControl hostControl)
         {
-            using (var client = new RedisClient(this.baseAddress))
+            if (this.redisClient == null)
             {
-                Task.Run(
-                    () =>
-                    {
-                        int count = 0;
-                        var evt = new ManualResetEvent(true);
-                        while (true)
-                        {
-                            if (count >= maxWorkerThreads)
-                            {
-                                evt.Reset();
-                            }
-                            evt.WaitOne();
-                            var msg = client.BlockingDequeueItemFromList(channel, null);
-                            Interlocked.Increment(ref count);
-                            Task.Run(async () => await this.HandleRequest(msg))
-                                .ContinueWith(
-                                    t => 
-                                    {
-                                        Interlocked.Decrement(ref count);
-                                        evt.Set();
-                                    });
-                        }
+                this.redisClient = ConnectionMultiplexer.Connect(this.baseAddress);
+            }
 
+            for (int i = 0; i < maxWorkerThreads; i++)
+            {
+                this.redisClient.GetSubscriber().Subscribe(
+                    this.channel,
+                    (c, v) =>
+                    {
+                        Task.Run(
+                          async () =>
+                          {
+                              string work;
+                              do
+                              {
+                                  work = this.redisClient.GetDatabase().ListLeftPop(this.channel);
+                                  if (work != null)
+                                  {
+                                      await this.HandleRequest(work);
+                                  }
+                              } while (work != null);
+                          });
                     });
             }
 
@@ -115,11 +115,6 @@ namespace Microwin.ServiceBus.Redis
             }
 
             return processor;
-        }
-
-        public void Dispose()
-        {
-            this.resolver.Dispose();
         }
     }
 }
