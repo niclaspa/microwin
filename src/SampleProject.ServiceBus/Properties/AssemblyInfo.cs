@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microwin.ServiceBus.Redis")]
+[assembly: AssemblyTitle("SampleProject.ServiceBus")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Niclas Paulsson")]
-[assembly: AssemblyProduct("Microwin.ServiceBus.Redis")]
+[assembly: AssemblyProduct("SampleProject.ServiceBus")]
 [assembly: AssemblyCopyright("Copyright © Niclas Paulsson 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("985566f2-94a4-4c5e-bc44-737e4fe59928")]
+[assembly: Guid("55627926-3e9c-4cfc-a955-92b22b1d941d")]
 
 // Version information for an assembly consists of the following four values:
 //

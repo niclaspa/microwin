@@ -1,5 +1,6 @@
 ﻿using Microwin.Hosting.Owin;
 using Microwin.Hosting.Unity;
+using SampleProject.IoC;
 using System;
 using System.Collections.Generic;
 using System.Linq;

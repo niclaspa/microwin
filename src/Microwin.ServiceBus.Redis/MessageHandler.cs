@@ -29,6 +29,7 @@ namespace Microwin.ServiceBus.Redis
         public MessageHandler(string channel, IDependencyResolver resolver, IEnumerable<IRequestProcessor> processors)
         {
             this.channel = channel;
+            this.resolver = resolver;
             this.requestProcessors = processors.ToDictionary(x => x.Endpoint);
             this.baseAddress = AppSettings.ReadString("RedisBaseAddress", true);
         }
@@ -81,7 +82,7 @@ namespace Microwin.ServiceBus.Redis
 
                     var request = this.ParseRequest(json);
                     var processor = this.ResolveProcessor(request.Action);
-                    await processor.ProcessRequest(container, request.Parameters);
+                    await processor.ProcessRequest(container, request.ViewModel);
                 }
             }
             catch (Exception e)

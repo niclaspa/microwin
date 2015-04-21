@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleProject.Owin.Services
+namespace SampleProject.Owin.ViewModels
 {
-    public interface IHelloService
+    public class Message
     {
-        string GetGreeting();
+        public string Text { get; set; }
     }
 }

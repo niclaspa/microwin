@@ -1,16 +1,14 @@
-﻿using Microwin.Extensions;
+﻿using SampleProject.Owin.Services;
+using SampleProject.Owin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
-using SampleProject.Owin.Services;
-using SampleProject.Owin.ViewModels;
 
-namespace SampleProject.Owin.Controllers
+namespace SampleProject.ServiceBus.Controllers
 {
-    public class HelloController : ApiController
+    public class HelloController
     {
         private IHelloService helloService;
 
@@ -21,11 +19,14 @@ namespace SampleProject.Owin.Controllers
             this.helloService = helloService;
         }
 
-        [HttpGet]
-        [Route("hello")]
-        public Message GetHello(string name)
+        public void PostMessage(Message message)
         {
-            return new Message { Text = "{0} {1}".InvariantFormat(this.helloService.GetGreeting(), name) };
+            this.helloService.PostMessage(message.Text);
+        }
+
+        public async Task PostMessageAsync(Message message)
+        {
+            await this.helloService.PostMessageAsync(message.Text);
         }
     }
 }

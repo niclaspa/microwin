@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SampleProject.Owin.Services
 {
-    public class HelloService : IHelloService
+    public interface IHelloService
     {
-        public string GetGreeting()
-        {
-            return "hello";
-        }
+        string GetGreeting();
+
+        void PostMessage(string message);
+
+        Task PostMessageAsync(string message);
     }
 }

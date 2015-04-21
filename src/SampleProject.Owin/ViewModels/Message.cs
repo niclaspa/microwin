@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleProject.Owin.ViewController
+namespace SampleProject.Owin.ViewModels
 {
     public class Message
     {
