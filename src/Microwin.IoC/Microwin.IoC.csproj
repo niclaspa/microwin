@@ -43,6 +43,9 @@
     <Compile Include="IDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Microwin.IoC.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)Build\Microwin.NuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
