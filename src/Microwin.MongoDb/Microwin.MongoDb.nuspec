@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microwin.MongoDb</id>
+    <version>1.0.0</version>
+    <title>Microwin.MongoDb</title>
+    <authors>Nic</authors>
+    <owners>Niclas Paulsson</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Bootstrapper for MongoDb projects. Contains repository pattern base class.</description>
+    <releaseNotes>Update.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <dependencies>
+      <dependency id="Microwin.IoC" version="1.0.0" />
+      <dependency id="MongoDB.Bson" version="2.0.0" />
+      <dependency id="MongoDB.Driver" version="2.0.0" />
+      <dependency id="MongoDB.Driver.Core" version="2.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+  </files>
+</package>
