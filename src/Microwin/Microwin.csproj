@@ -57,6 +57,12 @@
     <Compile Include="Config\AppSettingsReader.cs" />
     <Compile Include="Config\IAppSettingsProvider.cs" />
     <Compile Include="Config\IAppSettingsReader.cs" />
+    <Compile Include="Exceptions\BadRequestException.cs" />
+    <Compile Include="Exceptions\ConflictException.cs" />
+    <Compile Include="Exceptions\ForbiddenException.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\RestException.cs" />
+    <Compile Include="Exceptions\UnauthorizedException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

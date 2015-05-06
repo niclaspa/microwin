@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Microwin.Hosting.Owin</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Microwin.Hosting.Owin</title>
     <authors>Nic</authors>
     <owners>Niclas Paulsson</owners>
@@ -11,7 +11,7 @@
     <releaseNotes>Update.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <dependencies>
-      <dependency id="Microwin" version="1.0.0" />
+      <dependency id="Microwin" version="1.0.1" />
       <dependency id="Microsoft.AspNet.WebApi.Client" version="5.2.3" />
       <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
       <dependency id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" />

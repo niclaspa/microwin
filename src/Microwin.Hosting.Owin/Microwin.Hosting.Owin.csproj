@@ -73,8 +73,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionHandlingAttribute.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
     <Compile Include="HttpLoggingAttribute.cs" />
+    <Compile Include="IpFilterAttribute.cs" />
     <Compile Include="LocalConfig.cs" />
     <Compile Include="OwinService.cs" />
     <Compile Include="OwinServiceControl.cs" />
@@ -94,6 +96,7 @@
       <Name>Microwin</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)Build\Microwin.NuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
