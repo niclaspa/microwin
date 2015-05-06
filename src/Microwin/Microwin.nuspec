@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microwin</id>
+    <version>1.0.0</version>
+    <title>Microwin</title>
+    <authors>Nic</authors>
+    <owners>Niclas Paulsson</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Core library</description>
+    <releaseNotes>Update.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <dependencies>
+      <dependency id="log4net" version="2.0.3" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework="net45" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+    <!--<file src="**\*.cs" target="src" />-->
+  </files>
+</package>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microwin.ServiceBus.Redis</id>
+    <version>1.0.0</version>
+    <title>Microwin.ServiceBus.Redis</title>
+    <authors>Nic</authors>
+    <owners>Niclas Paulsson</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Bootstrapper for creating an async message bus queue using Redis pub/sub</description>
+    <releaseNotes>Update.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <dependencies>
+      <dependency id="Microwin" version="1.0.0" />
+      <dependency id="Microwin.IoC" version="1.0.0" />
+      <dependency id="Newtonsoft.Json" version="6.0.8" />
+      <dependency id="StackExchange.Redis" version="1.0.414" />
+      <dependency id="Topshelf" version="3.1.4" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+    <!--<file src="**\*.cs" target="src" />-->
+  </files>
+</package>
