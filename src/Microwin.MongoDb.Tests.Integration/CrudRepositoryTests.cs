@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microwin.Exceptions;
+using MongoDB.Bson;
 
 namespace Microwin.MongoDb.Tests.Integration
 {
@@ -27,6 +29,7 @@ namespace Microwin.MongoDb.Tests.Integration
             var server = factory.CreateMongoClient();
             var db = server.GetDatabase(DatabaseName);
             var coll = db.GetCollection<Book>(CollectionName);
+            coll.DeleteManyAsync(new BsonDocument());
 
             coll.Indexes.CreateOneAsync(Builders<Book>.IndexKeys.Ascending(x => x.Isbn), new CreateIndexOptions { Unique = true });
 
@@ -34,69 +37,157 @@ namespace Microwin.MongoDb.Tests.Integration
         }
 
         [Test]
-        public void DocumentCanBeCreated()
+        public async Task DocumentCanBeCreated()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+
+            // act
+            var id = await this.repository.Create(model);
+            var loadedModel = await this.repository.Load(id);
+
+            // assert
+            Assert.AreEqual(model.Id, id);
+            Assert.AreNotEqual(model.Id, default(Guid));
+            Assert.AreEqual(model.Isbn, loadedModel.Isbn);
         }
 
         [Test]
-        public void CreatingDocumentWithSameKeyIsNotAllowed()
+        public async Task CreatingDocumentWithSameKeyIsNotAllowed()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var id = await this.repository.Create(model);
+
+            // act
+            // assert
+            Assert.Catch(typeof(ConflictException), async () => await this.repository.Create(new Book { Id = id, Isbn = "isbn2" }));
         }
 
         [Test]
-        public void CreatingDocumentThatViolatesUniqueConstraintIsNotAllowed()
+        public async Task CreatingDocumentThatViolatesUniqueConstraintIsNotAllowed()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var id = await this.repository.Create(model);
+
+            // act
+            // assert
+            Assert.Catch(typeof(ConflictException), async () => await this.repository.Create(new Book { Isbn = "isbn" }));
         }
 
         [Test]
-        public void DocumentCanBeReplaced()
+        public async Task DocumentCanBeReplaced()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var id = await this.repository.Create(model);
+
+            // act
+            model.Isbn = "new";
+            await this.repository.CreateOrReplace(model);
+
+            // assert
+            var loadedModel = await this.repository.Load(id);
+            Assert.AreEqual("new", loadedModel.Isbn);
         }
 
         [Test]
-        public void DocumentIsCreatedIfNotReplaced()
+        public async Task DocumentIsCreatedIfNotReplaced()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+
+            // act
+            await this.repository.CreateOrReplace(model);
+
+            // assert
+            var loadedModel = await this.repository.Load(model.Id);
+            Assert.IsNotNull(loadedModel);
         }
 
         [Test]
-        public void MultipleDocumentsCanBeLoaded()
+        public async Task MultipleDocumentsCanBeLoaded()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var model2 = new Book { Isbn = "isbn2" };
+            var id = await this.repository.Create(model);
+            var id2 = await this.repository.Create(model2);
+
+            // act
+            var res = await this.repository.LoadAll(new[] { model.Id, model2.Id });
+
+            // assert
+            Assert.AreEqual(2, res.Count);
         }
 
         [Test]
-        public void AllDocumentsCanBeLoaded()
+        public async Task AllDocumentsCanBeLoaded()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var model2 = new Book { Isbn = "isbn2" };
+            var id = await this.repository.Create(model);
+            var id2 = await this.repository.Create(model2);
+
+            // act
+            var res = await this.repository.LoadAll();
+
+            // assert
+            Assert.AreEqual(2, res.Count);
         }
 
         [Test]
-        public void DocumentCanBeUpdatedAndVersionIncremented()
+        public async Task DocumentCanBeUpdatedAndVersionIncremented()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var id = await this.repository.Create(model);
+
+            // act
+            model.Isbn = "new";
+            await this.repository.Update(model);
+
+            // assert
+            var loadedModel = await this.repository.Load(model.Id);
+            Assert.AreEqual(2, loadedModel.Version);
+            Assert.AreEqual("new", loadedModel.Isbn);
         }
 
         [Test]
-        public void IfUpdateViolatesUniqueConstraintConflictIsReported()
+        public async Task IfUpdateViolatesUniqueConstraintConflictIsReported()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var model2 = new Book { Isbn = "isbn2" };
+            var id = await this.repository.Create(model);
+            var id2 = await this.repository.Create(model2);
+
+            // act
+            // assert
+            model.Isbn = model2.Isbn;
+            Assert.Catch(typeof(ConflictException), async () => await this.repository.Update(model));
         }
 
         [Test]
         public void IfUpdateIdDoesntExistErrorIsReported()
         {
-            throw new NotImplementedException();
+            Assert.Catch(typeof(NotFoundException), async () => await this.repository.Update(new Book { Id = Guid.NewGuid(), Version = 1 }));
         }
 
         [Test]
-        public void DocumentCanBeDeleted()
+        public async Task DocumentCanBeDeleted()
         {
-            throw new NotImplementedException();
+            // arrange
+            var model = new Book { Isbn = "isbn" };
+            var id = await this.repository.Create(model);
+
+            // act
+            await this.repository.Delete(id);
+
+            // assert
+            Assert.IsNull(await this.repository.Load(id));
         }
 
         private class Book : IDocument<Guid>

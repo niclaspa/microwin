@@ -35,9 +35,14 @@ namespace iNeed.MongoDb.Repositories
             {
                 await this.collection.InsertOneAsync(model);
             }
-            catch (MongoDuplicateKeyException) 
+            catch (MongoWriteException e)
             {
-                throw new ConflictException();
+                if (e.WriteError.Category == ServerErrorCategory.DuplicateKey)
+                {
+                    throw new ConflictException();
+                }
+
+                throw;
             }
 
             return model.Id;
@@ -109,7 +114,7 @@ namespace iNeed.MongoDb.Repositories
             if (replacementValue == null)
             {
                 var savedModel = await this.Load(model.Id);
-                if (savedModel.Version != preUpdateModelVersion)
+                if (savedModel != null && savedModel.Version != preUpdateModelVersion)
                 {
                     // document was modified in the database so we didn't write our update
                     model.Version = preUpdateModelVersion;

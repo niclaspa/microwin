@@ -43,6 +43,7 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,13 @@
       <Project>{bc6153bc-0ba5-4175-9185-621efea967e9}</Project>
       <Name>Microwin.MongoDb</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Microwin\Microwin.csproj">
+      <Project>{2ca86c92-ef58-4f28-8f19-7b3c5e26d89c}</Project>
+      <Name>Microwin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
