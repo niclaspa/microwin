@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Topshelf;
 using Microwin.Logging;
+using Newtonsoft.Json;
 
 namespace Microwin.Hosting.Owin
 {
@@ -15,10 +16,12 @@ namespace Microwin.Hosting.Owin
     {
         private IDisposable webApplication;
         private HttpConfiguration config;
+        private JsonSerializerSettings jsonSettings;
 
-        public OwinServiceControl(HttpConfiguration config)
+        public OwinServiceControl(HttpConfiguration config, JsonSerializerSettings jsonSettings)
         {
             this.config = config;
+            this.jsonSettings = jsonSettings;
         }
 
         public bool Start(HostControl hostControl)
@@ -32,7 +35,7 @@ namespace Microwin.Hosting.Owin
 
             Log.Info("Listening on {0}".InvariantFormat(string.Join(",", options.Urls)));
 
-            this.webApplication = WebApp.Start(options, (x) => WebPipeline.Configure(x, config));
+            this.webApplication = WebApp.Start(options, (x) => WebPipeline.Configure(x, config, jsonSettings));
             return true;
         }
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Microwin.Hosting.Owin</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Microwin.Hosting.Owin</title>
     <authors>Nic</authors>
     <owners>Niclas Paulsson</owners>

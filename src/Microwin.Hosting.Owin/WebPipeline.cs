@@ -16,11 +16,16 @@ namespace Microwin.Hosting.Owin
 {
     public static class WebPipeline
     {
-        public static void Configure(IAppBuilder application, HttpConfiguration config)
+        public static void Configure(IAppBuilder application, HttpConfiguration config, JsonSerializerSettings jsonSettings)
         {
             config.MapHttpAttributeRoutes();
             ConfigureApiDocs(config);
             application.UseWebApi(config);
+            if (jsonSettings != null)
+            {
+                JsonConvert.DefaultSettings = () => jsonSettings;
+                config.Formatters.JsonFormatter.SerializerSettings = jsonSettings;
+            }
         }
 
         public static void ConfigureApiDocs(HttpConfiguration config)

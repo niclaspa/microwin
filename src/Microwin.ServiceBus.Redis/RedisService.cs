@@ -2,6 +2,7 @@
 using Microwin.Extensions;
 using Microwin.IoC;
 using Microwin.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,17 @@ namespace Microwin.ServiceBus.Redis
 
         public static void Start(string channel, IDependencyResolver resolver, params IRequestProcessor[] processors)
         {
+            Start(channel, resolver, null, processors);
+        }
+
+        public static void Start(string channel, IDependencyResolver resolver, JsonSerializerSettings jsonSettings, params IRequestProcessor[] processors)
+        {
             Log.Info("Starting {0} ...".InvariantFormat(name));
+
+            if (jsonSettings != null)
+            {
+                JsonConvert.DefaultSettings = () => jsonSettings;
+            }
 
             HostFactory.Run(x =>
             {

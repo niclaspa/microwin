@@ -2,6 +2,7 @@
 using Microwin.Config;
 using Microwin.Extensions;
 using Microwin.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,13 @@ namespace Microwin.Hosting.Owin
             Start(new HttpConfiguration());
         }
 
-        public static void Start(HttpConfiguration config)
+        public static void Start(HttpConfiguration config, JsonSerializerSettings jsonSettings = null)
         {
             Log.Info("Starting {0} ...".InvariantFormat(name));
 
             HostFactory.Run(x =>
             {
-                x.Service(() => new OwinServiceControl(config));
+                x.Service(() => new OwinServiceControl(config, jsonSettings));
                 x.RunAsLocalSystem();
                 x.EnableShutdown();
 
