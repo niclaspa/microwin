@@ -12,5 +12,7 @@ namespace Microwin.MongoDb
         public T Id { get; set; }
 
         public int Version { get; set; }
+
+        public DateTime CreatedTime { get; set; }
     }
 }

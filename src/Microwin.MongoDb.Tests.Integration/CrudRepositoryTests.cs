@@ -49,6 +49,7 @@ namespace Microwin.MongoDb.Tests.Integration
             // assert
             Assert.AreEqual(model.Id, id);
             Assert.AreNotEqual(model.Id, default(Guid));
+            Assert.AreNotEqual(model.CreatedTime, default(DateTime));
             Assert.AreEqual(model.Isbn, loadedModel.Isbn);
         }
 
@@ -195,6 +196,8 @@ namespace Microwin.MongoDb.Tests.Integration
             public Guid Id { get; set; }
 
             public int Version { get; set; }
+
+            public DateTime CreatedTime { get; set; }
 
             public string Isbn { get; set; } // unique constraint
         }

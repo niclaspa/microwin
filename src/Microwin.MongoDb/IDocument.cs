@@ -11,5 +11,7 @@ namespace iNeed.MongoDb.Models
         T Id { get; set; }
 
         int Version { get; set; }
+
+        DateTime CreatedTime { get; set; }
     }
 }

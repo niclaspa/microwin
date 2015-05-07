@@ -31,6 +31,7 @@ namespace iNeed.MongoDb.Repositories
             this.PreCreate(model);
 
             model.Version = 1;
+            model.CreatedTime = DateTime.UtcNow;
             try
             {
                 await this.collection.InsertOneAsync(model);
@@ -53,6 +54,7 @@ namespace iNeed.MongoDb.Repositories
             this.PreCreate(model);
 
             model.Version = 1;
+            model.CreatedTime = DateTime.UtcNow;
             await this.collection.ReplaceOneAsync(
                 Builders<TVal>.Filter.Eq(x => x.Id, model.Id),
                 model,
