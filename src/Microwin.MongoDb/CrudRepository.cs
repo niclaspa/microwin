@@ -18,6 +18,14 @@ namespace iNeed.MongoDb.Repositories
     {
         protected IMongoCollection<TVal> collection;
 
+        protected FilterDefinitionBuilder<TVal> Filter 
+        {
+            get
+            {
+                return Builders<TVal>.Filter;
+            }
+        }
+
         public CrudRepository(IMongoClientFactory clientFactory, string dbName, string collectionName)
         {
             if (clientFactory == null) { throw new ArgumentNullException("clientFactory"); }
@@ -56,7 +64,7 @@ namespace iNeed.MongoDb.Repositories
             model.Version = 1;
             model.CreatedTime = DateTime.UtcNow;
             await this.collection.ReplaceOneAsync(
-                Builders<TVal>.Filter.Eq(x => x.Id, model.Id),
+                Filter.Eq(x => x.Id, model.Id),
                 model,
                 new UpdateOptions { IsUpsert = true });
         }
@@ -71,12 +79,12 @@ namespace iNeed.MongoDb.Repositories
 
         public async Task<TVal> Load(TKey id)
         {
-            return await this.collection.Find(Builders<TVal>.Filter.Eq(x => x.Id, id)).FirstOrDefaultAsync();
+            return await this.collection.Find(Filter.Eq(x => x.Id, id)).FirstOrDefaultAsync();
         }
 
         public async Task<List<TVal>> LoadAll(IEnumerable<TKey> ids)
         {
-            return await this.collection.Find(Builders<TVal>.Filter.In(x => x.Id, ids)).ToListAsync();
+            return await this.collection.Find(Filter.In(x => x.Id, ids)).ToListAsync();
         }
 
         public async Task Update(TVal model)
@@ -98,7 +106,7 @@ namespace iNeed.MongoDb.Repositories
             TVal replacementValue = null;
             try
             {
-                var b = Builders<TVal>.Filter;
+                var b = Filter;
                 replacementValue = await this.collection.FindOneAndReplaceAsync<TVal>(
                     b.Eq(x => x.Id, model.Id) & 
                     b.Eq(x => x.Version, preUpdateModelVersion), model);
@@ -131,7 +139,7 @@ namespace iNeed.MongoDb.Repositories
 
         public async Task Delete(TKey id)
         {
-            await this.collection.FindOneAndDeleteAsync(Builders<TVal>.Filter.Eq(x => x.Id, id));
+            await this.collection.FindOneAndDeleteAsync(Filter.Eq(x => x.Id, id));
         }
 
         public async Task<List<TVal>> LoadAll()
