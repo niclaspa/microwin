@@ -65,6 +65,7 @@
     <Compile Include="Exceptions\RestException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="FuncEqualityComparer.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
