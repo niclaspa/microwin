@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC6153BC-0BA5-4175-9185-621EFEA967E9}</ProjectGuid>
+    <ProjectGuid>{3CD5A821-882C-472C-99C8-8227FE2C3E94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microwin.MongoDb</RootNamespace>
-    <AssemblyName>Microwin.MongoDb</AssemblyName>
+    <RootNamespace>Microwin.MongoDb.Tests.Unit</RootNamespace>
+    <AssemblyName>Microwin.MongoDb.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\MongoDB.Bson.2.0.0\lib\net45\MongoDB.Bson.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\MongoDB.Driver.2.0.0\lib\net45\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>..\packages\MongoDB.Driver.Core.2.0.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,29 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrudRepository.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="IReadRepository.cs" />
-    <Compile Include="ICrudRepository.cs" />
-    <Compile Include="IDocument.cs" />
-    <Compile Include="IMongoClientFactory.cs" />
-    <Compile Include="CachedReadRepository.cs" />
-    <Compile Include="MongoClientFactory.cs" />
-    <Compile Include="MongoConfig.cs" />
+    <Compile Include="CachedReadRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microwin.MongoDb.nuspec" />
+    <ProjectReference Include="..\Microwin.MongoDb\Microwin.MongoDb.csproj">
+      <Project>{bc6153bc-0ba5-4175-9185-621efea967e9}</Project>
+      <Name>Microwin.MongoDb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microwin\Microwin.csproj">
-      <Project>{2ca86c92-ef58-4f28-8f19-7b3c5e26d89c}</Project>
-      <Name>Microwin</Name>
-    </ProjectReference>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)Build\Microwin.NuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

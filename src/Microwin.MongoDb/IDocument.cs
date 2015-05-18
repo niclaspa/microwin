@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iNeed.MongoDb.Models
+namespace Microwin.MongoDb
 {
     public interface IDocument<T>
     {

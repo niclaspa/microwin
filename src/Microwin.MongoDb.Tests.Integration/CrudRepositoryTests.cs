@@ -1,7 +1,4 @@
-﻿using iNeed.MongoDb;
-using iNeed.MongoDb.Models;
-using iNeed.MongoDb.Repositories;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

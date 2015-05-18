@@ -1,17 +1,15 @@
-﻿using iNeed.MongoDb;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using iNeed.MongoDb.Models;
 using Microwin.Exceptions;
 using Microwin.Extensions;
 using iNeed.Exceptions;
 
-namespace iNeed.MongoDb.Repositories
+namespace Microwin.MongoDb
 {
     public class CrudRepository<TKey, TVal> : ICrudRepository<TKey, TVal>
         where TVal : class, IDocument<TKey>
