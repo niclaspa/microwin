@@ -24,6 +24,14 @@ namespace Microwin.MongoDb
             }
         }
 
+        protected UpdateDefinitionBuilder<TVal> UpdateBuilder
+        {
+            get
+            {
+                return Builders<TVal>.Update;
+            }
+        }
+
         public CrudRepository(IMongoClientFactory clientFactory, string dbName, string collectionName)
         {
             if (clientFactory == null) { throw new ArgumentNullException("clientFactory"); }
