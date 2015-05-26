@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microwin.MongoDb
 {
-    public interface ICrudRepository<TKey, TVal> : IReadRepository<TKey, TVal>
+    public interface ICrudRepository<TKey, TVal> : IReadRepository<TKey, TVal> where TVal : IDocument<TKey>
     {
         Task<TKey> Create(TVal model);
 

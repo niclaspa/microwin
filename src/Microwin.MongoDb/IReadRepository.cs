@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microwin.MongoDb
 {
-    public interface IReadRepository<TKey, TVal>
+    public interface IReadRepository<TKey, TVal> where TVal : IDocument<TKey>
     {
         Task<TVal> Load(TKey id);
 

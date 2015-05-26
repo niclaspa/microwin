@@ -6,16 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microwin.MongoDb
 {
-    public interface ICachedReadRepository<TKey, TVal> where TVal : IDocument<TKey>
-    {
-        Task<TVal> Load(TKey id);
-
-        Task<List<TVal>> LoadAll(IEnumerable<TKey> ids);
-
-        Task<List<TVal>> LoadAll();
-    }
-
-    public class CachedReadRepository<TKey, TVal> : ICachedReadRepository<TKey, TVal> where TVal : IDocument<TKey>
+    public class CachedReadRepository<TKey, TVal> : IReadRepository<TKey, TVal> where TVal : IDocument<TKey>
     {
         private IReadRepository<TKey, TVal> repo;
         private Dictionary<TKey, TVal> cache = new Dictionary<TKey,TVal>();
