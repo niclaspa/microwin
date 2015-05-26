@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.Hosting.Owin", "Microwin.Hosting.Owin\Microwin.Hosting.Owin.csproj", "{64D30283-7EC7-4CFB-B607-FEA0B8E10513}"
 EndProject
@@ -41,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.MongoDb.Tests.Integration", "Microwin.MongoDb.Tests.Integration\Microwin.MongoDb.Tests.Integration.csproj", "{2F3F022E-6C9F-475C-B4A2-558EA5CFED11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.MongoDb.Tests.Unit", "Microwin.MongoDb.Tests.Unit\Microwin.MongoDb.Tests.Unit.csproj", "{3CD5A821-882C-472C-99C8-8227FE2C3E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwin.ServiceBus.Client.Redis", "Microwin.ServiceBus.Client.Redis\Microwin.ServiceBus.Client.Redis.csproj", "{5E87BDD9-6DD7-46F0-8385-803FFD653F51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -108,18 +110,22 @@ Global
 		{3CD5A821-882C-472C-99C8-8227FE2C3E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CD5A821-882C-472C-99C8-8227FE2C3E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CD5A821-882C-472C-99C8-8227FE2C3E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E87BDD9-6DD7-46F0-8385-803FFD653F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E87BDD9-6DD7-46F0-8385-803FFD653F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E87BDD9-6DD7-46F0-8385-803FFD653F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E87BDD9-6DD7-46F0-8385-803FFD653F51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0798013D-828B-4076-822E-9051085FDC94} = {4FA7DDBE-73B0-4DE5-8A7C-D6C10CF7700D}
-		{2F3F022E-6C9F-475C-B4A2-558EA5CFED11} = {4FA7DDBE-73B0-4DE5-8A7C-D6C10CF7700D}
-		{3CD5A821-882C-472C-99C8-8227FE2C3E94} = {4FA7DDBE-73B0-4DE5-8A7C-D6C10CF7700D}
 		{474C88FE-C23C-4126-AA9C-3FB16EBF0A8D} = {7E8FB76D-A81C-4B6B-BC51-7FD1E48E2CCB}
 		{BEF1C544-6C79-44BD-A2B2-5204F93CFFBC} = {7E8FB76D-A81C-4B6B-BC51-7FD1E48E2CCB}
 		{01C446D9-B777-4F47-9BDD-15DE46AF4C9F} = {7E8FB76D-A81C-4B6B-BC51-7FD1E48E2CCB}
 		{27918445-7CFC-4601-90E1-38F2936F7CC5} = {7E8FB76D-A81C-4B6B-BC51-7FD1E48E2CCB}
 		{523EB058-95D6-4D66-B7AB-605595E65A2D} = {7E8FB76D-A81C-4B6B-BC51-7FD1E48E2CCB}
+		{2F3F022E-6C9F-475C-B4A2-558EA5CFED11} = {4FA7DDBE-73B0-4DE5-8A7C-D6C10CF7700D}
+		{3CD5A821-882C-472C-99C8-8227FE2C3E94} = {4FA7DDBE-73B0-4DE5-8A7C-D6C10CF7700D}
 	EndGlobalSection
 EndGlobal

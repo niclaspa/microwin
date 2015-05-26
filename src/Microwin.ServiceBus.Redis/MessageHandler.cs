@@ -92,10 +92,10 @@ namespace Microwin.ServiceBus.Redis
             Log.Info("Finished processing message");
         }
 
-        private Request ParseRequest(string json)
+        private ServiceBusRequest ParseRequest(string json)
         {
             JObject obj = JObject.Parse(json);
-            var request = obj.ToObject<Request>();
+            var request = obj.ToObject<ServiceBusRequest>();
 
             if (string.IsNullOrWhiteSpace(request.Action))
             {

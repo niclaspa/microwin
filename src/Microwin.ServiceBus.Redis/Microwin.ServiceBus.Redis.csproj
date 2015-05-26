@@ -50,13 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRequestProcessor.cs" />
-    <Compile Include="IServiceBusClient.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="RedisService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request.cs" />
     <Compile Include="RequestProcessor.cs" />
-    <Compile Include="RedisServiceBusClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microwin.IoC\Microwin.IoC.csproj">

@@ -1,4 +1,5 @@
-﻿using Microwin.ServiceBus.Redis;
+﻿using Microwin.ServiceBus.Client.Redis;
+using Microwin.ServiceBus.Redis;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SampleProject.Owin.ViewModels;

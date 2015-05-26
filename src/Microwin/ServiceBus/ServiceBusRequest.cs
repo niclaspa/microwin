@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microwin.ServiceBus.Redis
+namespace Microwin.ServiceBus
 {
-    public class Request
+    public class ServiceBusRequest
     {
-        public Request() { }
+        public ServiceBusRequest() { }
 
-        public Request(string action, JToken viewModel)
+        public ServiceBusRequest(string action, JToken viewModel)
         {
             this.Action = action;
             this.ViewModel = viewModel;
         }
 
-        public Request(string action, object viewModel)
+        public ServiceBusRequest(string action, object viewModel)
             : this(action, JToken.FromObject(viewModel))
         {
         }

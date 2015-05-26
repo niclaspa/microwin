@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Microwin.ServiceBus.Client.Redis\Microwin.ServiceBus.Client.Redis.csproj">
+      <Project>{5e87bdd9-6dd7-46f0-8385-803ffd653f51}</Project>
+      <Name>Microwin.ServiceBus.Client.Redis</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microwin.ServiceBus.Redis\Microwin.ServiceBus.Redis.csproj">
       <Project>{2d222b19-6650-4317-947c-d56c1d9de702}</Project>
       <Name>Microwin.ServiceBus.Redis</Name>
