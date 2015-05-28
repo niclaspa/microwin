@@ -21,16 +21,14 @@ namespace Microwin.MongoDb.Tests.Integration
         [SetUp]
         public void Setup()
         {
-            var factory = new MongoClientFactory();
-
-            var server = factory.CreateMongoClient();
-            var db = server.GetDatabase(DatabaseName);
+            var client = new MongoClient(MongoConfig.MongoDbConnectionString);
+            var db = client.GetDatabase(DatabaseName);
             var coll = db.GetCollection<Book>(CollectionName);
             coll.DeleteManyAsync(new BsonDocument());
 
             coll.Indexes.CreateOneAsync(Builders<Book>.IndexKeys.Ascending(x => x.Isbn), new CreateIndexOptions { Unique = true });
 
-            this.repository = new BookRepository(factory);
+            this.repository = new BookRepository(client);
         }
 
         [Test]
@@ -201,8 +199,8 @@ namespace Microwin.MongoDb.Tests.Integration
 
         private class BookRepository : CrudRepository<Guid, Book>
         {
-            public BookRepository(IMongoClientFactory clientFactory)
-                : base(clientFactory, DatabaseName, CollectionName)
+            public BookRepository(IMongoClient client)
+                : base(client, DatabaseName, CollectionName)
             {
             }
         }

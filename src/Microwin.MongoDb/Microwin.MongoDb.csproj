@@ -53,9 +53,7 @@
     <Compile Include="IReadRepository.cs" />
     <Compile Include="ICrudRepository.cs" />
     <Compile Include="IDocument.cs" />
-    <Compile Include="IMongoClientFactory.cs" />
     <Compile Include="CachedReadRepository.cs" />
-    <Compile Include="MongoClientFactory.cs" />
     <Compile Include="MongoConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -32,11 +32,11 @@ namespace Microwin.MongoDb
             }
         }
 
-        public CrudRepository(IMongoClientFactory clientFactory, string dbName, string collectionName)
+        public CrudRepository(IMongoClient client, string dbName, string collectionName)
         {
-            if (clientFactory == null) { throw new ArgumentNullException("clientFactory"); }
+            if (client == null) { throw new ArgumentNullException("client"); }
 
-            var db = clientFactory.CreateMongoClient().GetDatabase(dbName);
+            var db = client.GetDatabase(dbName);
             this.collection = db.GetCollection<TVal>(collectionName);
         }
 
