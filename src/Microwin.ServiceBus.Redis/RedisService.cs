@@ -24,6 +24,11 @@ namespace Microwin.ServiceBus.Redis
 
         public static void Start(string channel, IDependencyResolver resolver, JsonSerializerSettings jsonSettings, params IRequestProcessor[] processors)
         {
+            Start(channel, resolver, jsonSettings, null, null, processors);
+        }
+
+        public static void Start(string channel, IDependencyResolver resolver, JsonSerializerSettings jsonSettings, Action onStart, Action onStop, params IRequestProcessor[] processors)
+        {
             Log.Info("Starting {0} ...".InvariantFormat(name));
 
             if (jsonSettings != null)
@@ -33,7 +38,7 @@ namespace Microwin.ServiceBus.Redis
 
             HostFactory.Run(x =>
             {
-                x.Service(() => new MessageHandler(channel, resolver, processors));
+                x.Service(() => new MessageHandler(channel, resolver, processors, onStart, onStop));
                 x.RunAsLocalSystem();
                 x.EnableShutdown();
 

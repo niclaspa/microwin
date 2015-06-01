@@ -23,19 +23,28 @@ namespace Microwin.ServiceBus.Redis
         private string channel;
         private string baseAddress;
         private ConnectionMultiplexer redisClient;
+        private Action onStart;
+        private Action onStop;
 
         private readonly int maxWorkerThreads = Convert.ToInt32(AppSettings.ReadString("MaxWorkerThreads", true));
 
-        public MessageHandler(string channel, IDependencyResolver resolver, IEnumerable<IRequestProcessor> processors)
+        public MessageHandler(string channel, IDependencyResolver resolver, IEnumerable<IRequestProcessor> processors, Action onStart, Action onStop)
         {
             this.channel = channel;
             this.resolver = resolver;
             this.requestProcessors = processors.ToDictionary(x => x.Endpoint);
             this.baseAddress = AppSettings.ReadString("RedisBaseAddress", true);
+            this.onStart = onStart;
+            this.onStop = onStop;
         }
 
         public bool Start(HostControl hostControl)
         {
+            if (onStart != null)
+            {
+                this.onStart();
+            }
+
             if (this.redisClient == null)
             {
                 this.redisClient = ConnectionMultiplexer.Connect(this.baseAddress);
@@ -68,6 +77,11 @@ namespace Microwin.ServiceBus.Redis
 
         public bool Stop(HostControl hostControl)
         {
+            if (this.onStop != null)
+            {
+                this.onStop();
+            }
+
             return true;
         }
 
