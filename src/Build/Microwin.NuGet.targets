@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BeforeClean" Condition="Exists('$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe')">
+    <Exec Command="$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe uninstall" ContinueOnError="true" />
+  </Target>
+  <Target Name="BeforeBuild" Condition="Exists('$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe')">
+    <Exec Command="$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe stop" ContinueOnError="true" />
+  </Target>
+  <Target Name="AfterBuild" Condition="Exists('$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe') And '$(Configuration)' == 'Debug'">
+    <Exec Command="$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe install" ContinueOnError="false" />
+    <Exec Command="$(MSBuildProjectDirectory)\$(OutputPath)$(MSBuildProjectName).exe start" ContinueOnError="false" />
+  </Target>
+</Project>
