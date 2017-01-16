@@ -46,18 +46,21 @@ namespace Microwin.ServiceBus.Redis
                 this.redisClient = ConnectionMultiplexer.Connect(this.baseAddress);
             }
 
+            // process maxWorkerTheads jobs in parallel
             for (int i = 0; i < maxWorkerThreads; i++)
             {
                 this.redisClient.GetSubscriber().Subscribe(
                     this.channel,
                     (c, v) =>
                     {
+                        // when a message is posted to the redis channel we're subscribing to, handle it on a new thread
                         Task.Run(
                           async () =>
                           {
                               string work;
                               do
                               {
+                                  // pop the message of the redis queue (non-blocking)
                                   work = this.redisClient.GetDatabase().ListLeftPop(this.channel);
                                   if (work != null)
                                   {
@@ -85,6 +88,7 @@ namespace Microwin.ServiceBus.Redis
         {
             try
             {
+                // create container child scope so that each request runs in its own scope
                 using (var container = this.resolver.BeginScope())
                 {
                     Log.Info("Message received: {0}".InvariantFormat(json));
