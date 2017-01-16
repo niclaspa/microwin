@@ -14,13 +14,13 @@ namespace Microwin.ServiceBus.Redis
 {
     public class MessageHandler : ServiceControl
     {
-        private Dictionary<string, IRequestProcessor> requestProcessors;
-        private IDependencyResolver resolver;
-        private string channel;
-        private string baseAddress;
+        private readonly Dictionary<string, IRequestProcessor> requestProcessors;
+        private readonly IDependencyResolver resolver;
+        private readonly string channel;
+        private readonly string baseAddress;
         private ConnectionMultiplexer redisClient;
-        private Action onStart;
-        private Action onStop;
+        private readonly Action onStart;
+        private readonly Action onStop;
 
         private readonly int maxWorkerThreads = Convert.ToInt32(AppSettings.ReadString("MaxWorkerThreads", true));
 

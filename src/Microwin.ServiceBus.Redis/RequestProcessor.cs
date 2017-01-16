@@ -7,8 +7,8 @@ namespace Microwin.ServiceBus.Redis
 {
     public class RequestProcessor<TController, TViewModel> : IRequestProcessor
     {
-        private Func<TController, TViewModel, Task> executeAsync;
-        private Action<TController, TViewModel> execute;
+        private readonly Func<TController, TViewModel, Task> executeAsync;
+        private readonly Action<TController, TViewModel> execute;
 
         public string Endpoint { get; private set; }
 
