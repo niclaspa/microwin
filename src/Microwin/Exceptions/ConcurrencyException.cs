@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iNeed.Exceptions
+namespace Microwin.Exceptions
 {
     public class ConcurrencyException : Exception
     {

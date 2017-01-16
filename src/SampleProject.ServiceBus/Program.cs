@@ -2,8 +2,8 @@
 using Microwin.IoC.Unity;
 using Microwin.ServiceBus.Redis;
 using SampleProject.IoC;
-using SampleProject.Owin.ViewModels;
 using SampleProject.ServiceBus.Controllers;
+using SampleProject.ServiceBus.ViewModels;
 
 namespace SampleProject.ServiceBus
 {

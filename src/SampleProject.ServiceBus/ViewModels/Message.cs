@@ -1,4 +1,4 @@
-﻿namespace SampleProject.Owin.ViewModels
+﻿namespace SampleProject.ServiceBus.ViewModels
 {
     public class Message
     {

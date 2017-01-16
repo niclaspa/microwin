@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microwin.Exceptions;
-using iNeed.Exceptions;
 
 namespace Microwin.MongoDb
 {

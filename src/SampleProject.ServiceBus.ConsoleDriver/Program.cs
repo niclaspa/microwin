@@ -1,5 +1,5 @@
 ﻿using Microwin.ServiceBus.Client.Redis;
-using SampleProject.Owin.ViewModels;
+using SampleProject.ServiceBus.ViewModels;
 
 namespace SampleProject.ServiceBus.ConsoleDriver
 {
