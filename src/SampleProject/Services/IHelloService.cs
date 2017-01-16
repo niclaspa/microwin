@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SampleProject.Owin.Services
+namespace SampleProject.Services
 {
     public interface IHelloService
     {

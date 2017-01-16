@@ -1,5 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
-using SampleProject.Owin.Services;
+using SampleProject.Services;
 
 namespace SampleProject.IoC
 {

@@ -1,7 +1,7 @@
-﻿using SampleProject.Owin.Services;
-using SampleProject.Owin.ViewModels;
+﻿using SampleProject.Owin.ViewModels;
 using System;
 using System.Threading.Tasks;
+using SampleProject.Services;
 
 namespace SampleProject.ServiceBus.Controllers
 {

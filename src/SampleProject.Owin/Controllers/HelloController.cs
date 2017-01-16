@@ -1,20 +1,19 @@
-﻿using Microwin.Extensions;
-using System;
+﻿using System;
 using System.Web.Http;
-using SampleProject.Owin.Services;
 using SampleProject.Owin.ViewModels;
 using Microwin.Hosting.Owin;
+using SampleProject.Services;
 
 namespace SampleProject.Owin.Controllers
 {
     [HttpLogging]
     public class HelloController : ApiController
     {
-        private IHelloService helloService;
+        private readonly IHelloService helloService;
 
         public HelloController(IHelloService helloService)
         {
-            if (helloService == null) { throw new ArgumentNullException("helloService"); }
+            if (helloService == null) { throw new ArgumentNullException(nameof(helloService)); }
 
             this.helloService = helloService;
         }
@@ -23,7 +22,7 @@ namespace SampleProject.Owin.Controllers
         [Route("hello")]
         public Message GetHello(string name)
         {
-            return new Message { Text = "{0} {1}".InvariantFormat(this.helloService.GetGreeting(), name) };
+            return new Message { Text = $"{this.helloService.GetGreeting()} {name}" };
         }
     }
 }
