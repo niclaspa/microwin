@@ -13,12 +13,9 @@ namespace SampleProject.ServiceBus
         {
             RedisService.Start(
                 AppSettings.ReadString("ServiceName", true), 
-                new UnityDependencyResolver(UnityConfig.RegisterGlobalComponents()),
-                new[]
-                {
-                    new RequestProcessor<HelloController, Message>("post_message", (c, m) => c.PostMessage(m)),
-                    new RequestProcessor<HelloController, Message>("post_message_async", async (c, m) => await c.PostMessageAsync(m)),
-                });
+                new UnityDependencyResolver(UnityConfig.RegisterGlobalComponents()), 
+                new RequestProcessor<HelloController, Message>("post_message", (c, m) => c.PostMessage(m)), 
+                new RequestProcessor<HelloController, Message>("post_message_async", async (c, m) => await c.PostMessageAsync(m)));
         }
     }
 }
