@@ -1,13 +1,5 @@
 ﻿using Microwin.ServiceBus.Client.Redis;
-using Microwin.ServiceBus.Redis;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SampleProject.Owin.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SampleProject.ServiceBus.ConsoleDriver
 {

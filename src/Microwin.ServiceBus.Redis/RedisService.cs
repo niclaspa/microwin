@@ -4,11 +4,6 @@ using Microwin.IoC;
 using Microwin.Logging;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Topshelf;
 
 namespace Microwin.ServiceBus.Redis
